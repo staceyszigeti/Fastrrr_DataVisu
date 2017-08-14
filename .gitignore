@@ -1,0 +1,14 @@
+# no .a files
+*.exe
+*.txt
+*.pdf
+
+# line tells Git to ignore all files whose names end with a tilde (~), which is used by many text editors such as Emacs to mark temporary files. 
+*~
+
+# but do track lib.a, even though you're ignoring .a files above
+#!lib.a
+
+# ignore all files in the build/ directory
+bin/Debug/
+
