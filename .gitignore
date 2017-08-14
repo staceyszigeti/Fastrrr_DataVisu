@@ -10,5 +10,6 @@
 #!lib.a
 
 # ignore all files in the build/ directory
-bin/Debug/
+bin/
+obj/
 
