@@ -56,6 +56,8 @@
             this.LabelType = new System.Windows.Forms.Label();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label10 = new System.Windows.Forms.Label();
+            this.LabelNumberOfFix = new System.Windows.Forms.Label();
             this.groupBoxCalculatedValues.SuspendLayout();
             this.groupBoxFileData.SuspendLayout();
             this.groupBoxSailingData.SuspendLayout();
@@ -102,6 +104,8 @@
             // 
             // groupBoxFileData
             // 
+            this.groupBoxFileData.Controls.Add(this.LabelNumberOfFix);
+            this.groupBoxFileData.Controls.Add(this.label10);
             this.groupBoxFileData.Controls.Add(this.LabelFileName);
             this.groupBoxFileData.Controls.Add(this.label1);
             this.groupBoxFileData.Controls.Add(this.Label2);
@@ -331,6 +335,24 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Number of fix:";
+            // 
+            // LabelNumberOfFix
+            // 
+            this.LabelNumberOfFix.AutoSize = true;
+            this.LabelNumberOfFix.Location = new System.Drawing.Point(102, 58);
+            this.LabelNumberOfFix.Name = "LabelNumberOfFix";
+            this.LabelNumberOfFix.Size = new System.Drawing.Size(10, 13);
+            this.LabelNumberOfFix.TabIndex = 9;
+            this.LabelNumberOfFix.Text = "-";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,6 +405,8 @@
         private System.Windows.Forms.Label LabelType;
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label LabelNumberOfFix;
+        private System.Windows.Forms.Label label10;
     }
 }
 
