@@ -91,6 +91,7 @@ namespace Fastrrr_DataVisu
 
         public void FileCheck()
         {
+
             NumberOfLines = Lines.Length;
 
             for (int i = 0; i < NumberOfLines; i++)
