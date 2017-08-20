@@ -33,6 +33,8 @@
             this.LabelAverageSpeed = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBoxFileData = new System.Windows.Forms.GroupBox();
+            this.LabelNumberOfFix = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.LabelFileName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
@@ -56,8 +58,8 @@
             this.LabelType = new System.Windows.Forms.Label();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label10 = new System.Windows.Forms.Label();
-            this.LabelNumberOfFix = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.LabelNumberOfMissingData = new System.Windows.Forms.Label();
             this.groupBoxCalculatedValues.SuspendLayout();
             this.groupBoxFileData.SuspendLayout();
             this.groupBoxSailingData.SuspendLayout();
@@ -104,6 +106,8 @@
             // 
             // groupBoxFileData
             // 
+            this.groupBoxFileData.Controls.Add(this.LabelNumberOfMissingData);
+            this.groupBoxFileData.Controls.Add(this.label13);
             this.groupBoxFileData.Controls.Add(this.LabelNumberOfFix);
             this.groupBoxFileData.Controls.Add(this.label10);
             this.groupBoxFileData.Controls.Add(this.LabelFileName);
@@ -116,6 +120,24 @@
             this.groupBoxFileData.TabIndex = 24;
             this.groupBoxFileData.TabStop = false;
             this.groupBoxFileData.Text = "File data:";
+            // 
+            // LabelNumberOfFix
+            // 
+            this.LabelNumberOfFix.AutoSize = true;
+            this.LabelNumberOfFix.Location = new System.Drawing.Point(102, 58);
+            this.LabelNumberOfFix.Name = "LabelNumberOfFix";
+            this.LabelNumberOfFix.Size = new System.Drawing.Size(10, 13);
+            this.LabelNumberOfFix.TabIndex = 9;
+            this.LabelNumberOfFix.Text = "-";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Number of fix:";
             // 
             // LabelFileName
             // 
@@ -335,23 +357,24 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label10
+            // label13
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 58);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 13);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Number of fix:";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 78);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Missing data:";
             // 
-            // LabelNumberOfFix
+            // LabelNumberOfMissingData
             // 
-            this.LabelNumberOfFix.AutoSize = true;
-            this.LabelNumberOfFix.Location = new System.Drawing.Point(102, 58);
-            this.LabelNumberOfFix.Name = "LabelNumberOfFix";
-            this.LabelNumberOfFix.Size = new System.Drawing.Size(10, 13);
-            this.LabelNumberOfFix.TabIndex = 9;
-            this.LabelNumberOfFix.Text = "-";
+            this.LabelNumberOfMissingData.AutoSize = true;
+            this.LabelNumberOfMissingData.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LabelNumberOfMissingData.Location = new System.Drawing.Point(102, 78);
+            this.LabelNumberOfMissingData.Name = "LabelNumberOfMissingData";
+            this.LabelNumberOfMissingData.Size = new System.Drawing.Size(10, 13);
+            this.LabelNumberOfMissingData.TabIndex = 11;
+            this.LabelNumberOfMissingData.Text = "-";
             // 
             // Form1
             // 
@@ -364,7 +387,7 @@
             this.Controls.Add(this.hScrollBar1);
             this.Controls.Add(this.buttonLoadTrack);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Fastrrr - DataVisu";
             this.groupBoxCalculatedValues.ResumeLayout(false);
             this.groupBoxCalculatedValues.PerformLayout();
             this.groupBoxFileData.ResumeLayout(false);
@@ -407,6 +430,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label LabelNumberOfFix;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label LabelNumberOfMissingData;
+        private System.Windows.Forms.Label label13;
     }
 }
 

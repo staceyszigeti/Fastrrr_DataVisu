@@ -30,13 +30,15 @@ namespace Fastrrr_DataVisu
         float[] Course;
 
 
-        int NumberOfLines;
+        int NumberOfLines = 0;
         int NumberOfFix = 0;
+        int NumberOfMissingData = 0;
 
         public void FileOpen()
         {
             NumberOfLines = 0;
             NumberOfFix = 0;
+            NumberOfMissingData = 0;
 
             DialogResult result = openFileDialog1.ShowDialog();
 
@@ -66,6 +68,7 @@ namespace Fastrrr_DataVisu
                     LabelFileName.Text = openFileDialog1.SafeFileName;
                     LabelNumberOfLine.Text = NumberOfLines.ToString();
                     LabelNumberOfFix.Text = NumberOfFix.ToString();
+                    LabelNumberOfMissingData.Text = NumberOfMissingData.ToString();
 
                 }
 
@@ -125,6 +128,8 @@ namespace Fastrrr_DataVisu
                     }
                     else
                     {
+                        NumberOfMissingData++;
+
                         try
                         {
                             Type[j] = RowBufferArray[0];
@@ -224,7 +229,7 @@ namespace Fastrrr_DataVisu
         {
 
             FileOpen();
-            LabelAverageSpeed.Text = CalculateAverage(Speed).ToString();
+            //LabelAverageSpeed.Text = CalculateAverage(Speed).ToString();
 
         }
 
