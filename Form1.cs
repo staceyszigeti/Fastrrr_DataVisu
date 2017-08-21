@@ -72,10 +72,10 @@ namespace Fastrrr_DataVisu
 
                 }
 
-                catch (ArgumentException ex)
+                /*catch (ArgumentException ex)
                 {
                     MessageBox.Show(ex.ToString());
-                }
+                }*/
 
                 catch (IOException ex)
                 {
@@ -87,6 +87,7 @@ namespace Fastrrr_DataVisu
             {
                 MessageBox.Show("File beolvasás hiba!");
             };
+
         }
 
         public void FileCheck()
@@ -96,10 +97,19 @@ namespace Fastrrr_DataVisu
 
             for (int i = 0; i < NumberOfLines; i++)
             {
-                if (Lines[i].Substring(0, 1) == "T")
+                try
                 {
-                    NumberOfFix++;
+                    if (Lines[i].Substring(0, 1) == "T")
+                    {
+                        NumberOfFix++;
+                    }
                 }
+                catch
+                {
+                    MessageBox.Show("Üres sort találat a " + i+1.ToString() + " sorban. Kérem a sort törölni.");
+                    i++;
+                };
+                
             };
         }
 
@@ -112,102 +122,110 @@ namespace Fastrrr_DataVisu
             {
                 string RowBuffer = Lines[i];
 
-                if (RowBuffer.Substring(0, 1) == "T")
+                try
                 {
-                    string[] RowBufferArray = RowBuffer.Split(delimiterChars);
-
-                    if (RowBufferArray[0] != "" && RowBufferArray[1] != "" && RowBufferArray[2] != "" && RowBufferArray[3] != "" && RowBufferArray[4] != "" && RowBufferArray[5] != "" && RowBufferArray[6] != "" && RowBufferArray[7] != "")
+                    if (RowBuffer.Substring(0, 1) == "T")
                     {
-                        Type[j] = RowBufferArray[0];
-                        Date[j] = DateTime.Parse(RowBufferArray[1]);
-                        Time[j] = DateTime.Parse(RowBufferArray[2]);
-                        Latitude[j] = float.Parse(RowBufferArray[3], System.Globalization.CultureInfo.InvariantCulture);
-                        Longitude[j] = float.Parse(RowBufferArray[4], System.Globalization.CultureInfo.InvariantCulture);
-                        Depth[j] = float.Parse(RowBufferArray[5], System.Globalization.CultureInfo.InvariantCulture);
-                        Speed[j] = float.Parse(RowBufferArray[6], System.Globalization.CultureInfo.InvariantCulture);
-                        Course[j] = float.Parse(RowBufferArray[7], System.Globalization.CultureInfo.InvariantCulture);
-                    }
-                    else
-                    {
-                        NumberOfMissingData++;
+                        string[] RowBufferArray = RowBuffer.Split(delimiterChars);
 
-                        try
+                        if (RowBufferArray[0] != "" && RowBufferArray[1] != "" && RowBufferArray[2] != "" && RowBufferArray[3] != "" && RowBufferArray[4] != "" && RowBufferArray[5] != "" && RowBufferArray[6] != "" && RowBufferArray[7] != "")
                         {
                             Type[j] = RowBufferArray[0];
-                        }
-                        catch
-                        {
-                            Type[j] = null;
-                        };
-
-                        try
-                        {
                             Date[j] = DateTime.Parse(RowBufferArray[1]);
-                        }
-                        catch
-                        {
-                            
-                        };
-
-                        try
-                        {
                             Time[j] = DateTime.Parse(RowBufferArray[2]);
-                        }
-                        catch
-                        {
-                            
-                        };
-
-                        try
-                        {
                             Latitude[j] = float.Parse(RowBufferArray[3], System.Globalization.CultureInfo.InvariantCulture);
-                        }
-                        catch
-                        {
-                            Latitude[j] = 0;
-                        };
-
-                        try
-                        {
                             Longitude[j] = float.Parse(RowBufferArray[4], System.Globalization.CultureInfo.InvariantCulture);
-                        }
-                        catch
-                        {
-                            Longitude[j] = 0;
-                        };
-
-                        try
-                        {
                             Depth[j] = float.Parse(RowBufferArray[5], System.Globalization.CultureInfo.InvariantCulture);
-                        }
-                        catch
-                        {
-                            Depth[j] = 0;
-                        };
-
-                        try
-                        {
                             Speed[j] = float.Parse(RowBufferArray[6], System.Globalization.CultureInfo.InvariantCulture);
-                        }
-                        catch
-                        {
-                            Speed[j] = 0;
-                        };
-
-                        try
-                        {
                             Course[j] = float.Parse(RowBufferArray[7], System.Globalization.CultureInfo.InvariantCulture);
                         }
-                        catch
+                        else
                         {
-                            Course[j] = 0;
-                        };
-                                              
-                        
-                    }
+                            NumberOfMissingData++;
 
-                    j++;
+                            try
+                            {
+                                Type[j] = RowBufferArray[0];
+                            }
+                            catch
+                            {
+                                Type[j] = null;
+                            };
+
+                            try
+                            {
+                                Date[j] = DateTime.Parse(RowBufferArray[1]);
+                            }
+                            catch
+                            {
+
+                            };
+
+                            try
+                            {
+                                Time[j] = DateTime.Parse(RowBufferArray[2]);
+                            }
+                            catch
+                            {
+
+                            };
+
+                            try
+                            {
+                                Latitude[j] = float.Parse(RowBufferArray[3], System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            catch
+                            {
+                                Latitude[j] = 0;
+                            };
+
+                            try
+                            {
+                                Longitude[j] = float.Parse(RowBufferArray[4], System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            catch
+                            {
+                                Longitude[j] = 0;
+                            };
+
+                            try
+                            {
+                                Depth[j] = float.Parse(RowBufferArray[5], System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            catch
+                            {
+                                Depth[j] = 0;
+                            };
+
+                            try
+                            {
+                                Speed[j] = float.Parse(RowBufferArray[6], System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            catch
+                            {
+                                Speed[j] = 0;
+                            };
+
+                            try
+                            {
+                                Course[j] = float.Parse(RowBufferArray[7], System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            catch
+                            {
+                                Course[j] = 0;
+                            };
+
+
+                        }
+
+                        j++;
+                    };
+                }
+                catch
+                {
+                    i++;
                 };
+
 
             }
         }
