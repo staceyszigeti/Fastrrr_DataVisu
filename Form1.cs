@@ -72,10 +72,10 @@ namespace Fastrrr_DataVisu
 
                 }
 
-                /*catch (ArgumentException ex)
+                catch (ArgumentException ex)
                 {
                     MessageBox.Show(ex.ToString());
-                }*/
+                }
 
                 catch (IOException ex)
                 {
