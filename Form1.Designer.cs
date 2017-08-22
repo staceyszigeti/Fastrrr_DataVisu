@@ -60,6 +60,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label13 = new System.Windows.Forms.Label();
             this.LabelNumberOfMissingData = new System.Windows.Forms.Label();
+            this.groupBoxDate = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBoxCalculatedValues.SuspendLayout();
             this.groupBoxFileData.SuspendLayout();
             this.groupBoxSailingData.SuspendLayout();
@@ -347,6 +349,7 @@
             // 
             // hScrollBar1
             // 
+            this.hScrollBar1.LargeChange = 1;
             this.hScrollBar1.Location = new System.Drawing.Point(12, 460);
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(262, 20);
@@ -376,11 +379,31 @@
             this.LabelNumberOfMissingData.TabIndex = 11;
             this.LabelNumberOfMissingData.Text = "-";
             // 
+            // groupBoxDate
+            // 
+            this.groupBoxDate.Location = new System.Drawing.Point(280, 41);
+            this.groupBoxDate.Name = "groupBoxDate";
+            this.groupBoxDate.Size = new System.Drawing.Size(242, 100);
+            this.groupBoxDate.TabIndex = 26;
+            this.groupBoxDate.TabStop = false;
+            this.groupBoxDate.Text = "Date";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 444);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "label14";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 509);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.groupBoxDate);
             this.Controls.Add(this.groupBoxCalculatedValues);
             this.Controls.Add(this.groupBoxFileData);
             this.Controls.Add(this.groupBoxSailingData);
@@ -395,6 +418,7 @@
             this.groupBoxSailingData.ResumeLayout(false);
             this.groupBoxSailingData.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -432,6 +456,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label LabelNumberOfMissingData;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.GroupBox groupBoxDate;
+        private System.Windows.Forms.Label label14;
     }
 }
 

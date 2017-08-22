@@ -16,6 +16,7 @@ namespace Fastrrr_DataVisu
         public Form1()
         {
             InitializeComponent();
+
         }
 
         //Variables declaration
@@ -29,6 +30,7 @@ namespace Fastrrr_DataVisu
         float[] Speed;
         float[] Course;
 
+        List<DateTime> listDate = new List<DateTime>();
 
         int NumberOfLines = 0;
         int NumberOfFix = 0;
@@ -87,6 +89,8 @@ namespace Fastrrr_DataVisu
             {
                 MessageBox.Show("File beolvasás hiba!");
             };
+
+            hScrollBar1.Maximum = Type.Length - 1;
 
         }
 
@@ -236,19 +240,45 @@ namespace Fastrrr_DataVisu
 
             for (int i = 0; i < data.Length; i++)
             {
-                sum = data[i];
+                sum = sum + data[i];
             };
 
-            double result = sum / data.Length;
+            double result = (sum / data.Length) * 0.539957;
 
             return result;
+        }
+
+        public void DateSelect()
+        {
+            for (int i = 0; i < Date.Length; i++)
+            {
+                if (listDate.Contains(Date[i]) == false)
+                {
+                    listDate.Add(Date[i]);
+                };               
+            };
+
+            listDate.Sort();
+
+            CheckBox box;
+            for (int i = 1; i <= listDate.Count; i++)
+            {
+                box = new CheckBox();
+                box.Name = "CheckBoxDataChecker" + (i + 1).ToString();
+                box.Text = listDate[i - 1].ToString("yyyy.MM.dd");
+                box.AutoSize = true;
+                box.Checked = true;
+                box.Location = new Point(16, 2 + i * 18); //vertical
+                groupBoxDate.Controls.Add(box);
+            };
         }
 
         private void buttonLoadTrack_Click(object sender, EventArgs e)
         {
 
             FileOpen();
-            //LabelAverageSpeed.Text = CalculateAverage(Speed).ToString();
+            DateSelect();
+            LabelAverageSpeed.Text = CalculateAverage(Speed).ToString("0.00") + " kts";
 
         }
 
@@ -262,6 +292,8 @@ namespace Fastrrr_DataVisu
             LabelDepth.Text = Depth[hScrollBar1.Value].ToString();
             LabelSpeed.Text = Speed[hScrollBar1.Value].ToString();
             LabelCourse.Text = Course[hScrollBar1.Value].ToString();
+
+            label14.Text = hScrollBar1.Value.ToString();
         }
     }
 }
