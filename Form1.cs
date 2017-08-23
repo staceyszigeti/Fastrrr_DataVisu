@@ -31,10 +31,25 @@ namespace Fastrrr_DataVisu
         float[] Course;
 
         List<DateTime> listDate = new List<DateTime>();
+        List<CheckBox> CheckBoxes = new List<CheckBox>();
+
+        //Keresés eredménye a tömbben
+        List<DateTime> SearchResulDate = new List<DateTime>();
+        List<DateTime> SearchResulTime = new List<DateTime>();
+        List<float> SearchResulLatitude = new List<float>();
+        List<float> SearchResulLongitude = new List<float>();
+        List<float> SearchResulDepth = new List<float>();
+        List<float> SearchResulSpeed = new List<float>();
+        List<float> SearchResulCourse = new List<float>();
 
         int NumberOfLines = 0;
         int NumberOfFix = 0;
         int NumberOfMissingData = 0;
+
+        int[] NumOfChecked; 
+        int intNumOfChecked = 0;
+        int PosOfChecked = 0;
+        string SelectedDate;
 
         public void FileOpen()
         {
@@ -264,13 +279,95 @@ namespace Fastrrr_DataVisu
             for (int i = 1; i <= listDate.Count; i++)
             {
                 box = new CheckBox();
-                box.Name = "CheckBoxDataChecker" + (i + 1).ToString();
+                box.Name = "CheckBoxDataChecker" + (i).ToString();
                 box.Text = listDate[i - 1].ToString("yyyy.MM.dd");
                 box.AutoSize = true;
                 box.Checked = true;
                 box.Location = new Point(16, 2 + i * 18); //vertical
                 groupBoxDate.Controls.Add(box);
+                CheckBoxes.Add(box);
             };
+
+            if (Time != null)
+            {
+                dateTimePicker1.Value = Time.Min();
+                dateTimePicker2.Value = Time.Max();
+            };
+
+            NumOfChecked = new int[listDate.Count]; 
+
+            //var first = CheckBoxes.First();
+            //first.Text = "First Checkbox";
+        }
+
+        public void TimeSelect()
+        {
+            intNumOfChecked = 0;
+            PosOfChecked = 0;
+
+            for (int i = 0; i < CheckBoxes.Count; i++)
+            {
+                var CheckBoxDataChecker = CheckBoxes[i];
+                if (CheckBoxDataChecker.Checked == true)
+                {
+                    NumOfChecked[i] = 1;
+                    intNumOfChecked++;
+                }
+                else
+                {
+                    NumOfChecked[i] = 0;
+                };
+            };
+
+            if (intNumOfChecked == 1)
+            {
+                for (int i = 0; i < NumOfChecked.Length; i++)
+                {
+                    if (NumOfChecked[i] == 1)
+                    {
+                        PosOfChecked = i;
+                        break;
+                    };
+                };
+
+                SelectedDate = CheckBoxes[PosOfChecked].Text;
+                SearchInArray();
+            }
+            else
+            {
+                MessageBox.Show("Ez a funkció csak egy napon belül működik. Kérem válasszon ki egy napot.");
+            };
+
+        }
+
+        private void SearchInArray()
+        {
+            SearchResulDate.Clear();
+            SearchResulTime.Clear();
+            SearchResulLatitude.Clear();
+            SearchResulLongitude.Clear();
+            SearchResulDepth.Clear();
+            SearchResulSpeed.Clear();
+            SearchResulCourse.Clear();
+
+            for (int i = 0; i < Date.Length; i++)
+            {
+                if (Date[i].ToString("yyyy.MM.dd") == SelectedDate)
+                {
+                    SearchResulDate.Add(Date[i]);
+                    SearchResulTime.Add(Time[i]);
+                    SearchResulLatitude.Add(Latitude[i]);
+                    SearchResulLongitude.Add(Longitude[i]);
+                    SearchResulDepth.Add(Depth[i]);
+                    SearchResulSpeed.Add(Speed[i]);
+                    SearchResulCourse.Add(Course[i]);
+                };
+            };
+
+            dateTimePicker1.Value = SearchResulTime.Min();
+            dateTimePicker2.Value = SearchResulTime.Max();
+            labelTimeDiff.Text = SearchResulTime.Max().Subtract(SearchResulTime.Min()).ToString();
+
         }
 
         private void buttonLoadTrack_Click(object sender, EventArgs e)
@@ -279,21 +376,28 @@ namespace Fastrrr_DataVisu
             FileOpen();
             DateSelect();
             LabelAverageSpeed.Text = CalculateAverage(Speed).ToString("0.00") + " kts";
-
         }
 
         private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
-            LabelType.Text = Type[hScrollBar1.Value];
-            LabelDate.Text = Date[hScrollBar1.Value].ToString("yyyy-MM-dd");
-            LabelTime.Text = Time[hScrollBar1.Value].ToString("HH:mm:ss");
-            LabelLatitude.Text = Latitude[hScrollBar1.Value].ToString();
-            LabelLongitude.Text = Longitude[hScrollBar1.Value].ToString();
-            LabelDepth.Text = Depth[hScrollBar1.Value].ToString();
-            LabelSpeed.Text = Speed[hScrollBar1.Value].ToString();
-            LabelCourse.Text = Course[hScrollBar1.Value].ToString();
-
+            if (Type != null)
+            {
+                LabelType.Text = Type[hScrollBar1.Value];
+                LabelDate.Text = Date[hScrollBar1.Value].ToString("yyyy-MM-dd");
+                LabelTime.Text = Time[hScrollBar1.Value].ToString("HH:mm:ss");
+                LabelLatitude.Text = Latitude[hScrollBar1.Value].ToString();
+                LabelLongitude.Text = Longitude[hScrollBar1.Value].ToString();
+                LabelDepth.Text = Depth[hScrollBar1.Value].ToString();
+                LabelSpeed.Text = Speed[hScrollBar1.Value].ToString();
+                LabelCourse.Text = Course[hScrollBar1.Value].ToString();
+            };
+            
             label14.Text = hScrollBar1.Value.ToString();
+        }
+
+        private void buttonSelectTimeIntervall_Click(object sender, EventArgs e)
+        {
+            TimeSelect();
         }
     }
 }

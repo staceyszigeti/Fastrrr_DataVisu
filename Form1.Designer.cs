@@ -62,9 +62,16 @@
             this.LabelNumberOfMissingData = new System.Windows.Forms.Label();
             this.groupBoxDate = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.groupBoxTime = new System.Windows.Forms.GroupBox();
+            this.buttonSelectTimeIntervall = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.labelTimeDiff = new System.Windows.Forms.Label();
             this.groupBoxCalculatedValues.SuspendLayout();
             this.groupBoxFileData.SuspendLayout();
             this.groupBoxSailingData.SuspendLayout();
+            this.groupBoxTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLoadTrack
@@ -386,22 +393,87 @@
             this.groupBoxDate.Size = new System.Drawing.Size(242, 100);
             this.groupBoxDate.TabIndex = 26;
             this.groupBoxDate.TabStop = false;
-            this.groupBoxDate.Text = "Date";
+            this.groupBoxDate.Text = "Date:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(12, 444);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.Size = new System.Drawing.Size(13, 13);
             this.label14.TabIndex = 27;
-            this.label14.Text = "label14";
+            this.label14.Text = "0";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "hh:mm";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 24);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(229, 20);
+            this.dateTimePicker1.TabIndex = 28;
+            this.dateTimePicker1.Value = new System.DateTime(2017, 8, 23, 0, 0, 0, 0);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "hh:mm";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker2.Location = new System.Drawing.Point(6, 50);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowUpDown = true;
+            this.dateTimePicker2.Size = new System.Drawing.Size(229, 20);
+            this.dateTimePicker2.TabIndex = 29;
+            this.dateTimePicker2.Value = new System.DateTime(2017, 8, 23, 0, 0, 0, 0);
+            // 
+            // groupBoxTime
+            // 
+            this.groupBoxTime.Controls.Add(this.labelTimeDiff);
+            this.groupBoxTime.Controls.Add(this.label15);
+            this.groupBoxTime.Controls.Add(this.buttonSelectTimeIntervall);
+            this.groupBoxTime.Controls.Add(this.dateTimePicker1);
+            this.groupBoxTime.Controls.Add(this.dateTimePicker2);
+            this.groupBoxTime.Location = new System.Drawing.Point(281, 148);
+            this.groupBoxTime.Name = "groupBoxTime";
+            this.groupBoxTime.Size = new System.Drawing.Size(241, 130);
+            this.groupBoxTime.TabIndex = 30;
+            this.groupBoxTime.TabStop = false;
+            this.groupBoxTime.Text = "Time:";
+            // 
+            // buttonSelectTimeIntervall
+            // 
+            this.buttonSelectTimeIntervall.Location = new System.Drawing.Point(77, 93);
+            this.buttonSelectTimeIntervall.Name = "buttonSelectTimeIntervall";
+            this.buttonSelectTimeIntervall.Size = new System.Drawing.Size(158, 23);
+            this.buttonSelectTimeIntervall.TabIndex = 30;
+            this.buttonSelectTimeIntervall.Text = "Update Time Intervall";
+            this.buttonSelectTimeIntervall.UseVisualStyleBackColor = true;
+            this.buttonSelectTimeIntervall.Click += new System.EventHandler(this.buttonSelectTimeIntervall_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(7, 73);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Elipsed:";
+            // 
+            // labelTimeDiff
+            // 
+            this.labelTimeDiff.AutoSize = true;
+            this.labelTimeDiff.Location = new System.Drawing.Point(58, 74);
+            this.labelTimeDiff.Name = "labelTimeDiff";
+            this.labelTimeDiff.Size = new System.Drawing.Size(43, 13);
+            this.labelTimeDiff.TabIndex = 32;
+            this.labelTimeDiff.Text = "0:00:00";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 509);
+            this.Controls.Add(this.groupBoxTime);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBoxDate);
             this.Controls.Add(this.groupBoxCalculatedValues);
@@ -410,13 +482,15 @@
             this.Controls.Add(this.hScrollBar1);
             this.Controls.Add(this.buttonLoadTrack);
             this.Name = "Form1";
-            this.Text = "Fastrrr - DataVisu";
+            this.Text = "Fastrrr -DataVisu";
             this.groupBoxCalculatedValues.ResumeLayout(false);
             this.groupBoxCalculatedValues.PerformLayout();
             this.groupBoxFileData.ResumeLayout(false);
             this.groupBoxFileData.PerformLayout();
             this.groupBoxSailingData.ResumeLayout(false);
             this.groupBoxSailingData.PerformLayout();
+            this.groupBoxTime.ResumeLayout(false);
+            this.groupBoxTime.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,6 +532,12 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBoxDate;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.GroupBox groupBoxTime;
+        private System.Windows.Forms.Button buttonSelectTimeIntervall;
+        private System.Windows.Forms.Label labelTimeDiff;
+        private System.Windows.Forms.Label label15;
     }
 }
 
